@@ -45,5 +45,5 @@ for i in `ls *jump`; do python ~/src/splitread_bed.py --i $i > ../k3-bed/$i.bed;
 for i in `ls *bed`; do python ~/src/clustering_exhausting.py --i $i > $i.td ; done
 
 
-The final .td file then store tandem duplication calls for following analysis. For example, the bed_filtering.py could bed used to check and filter unexpected call whose length is as long as pre-defined by us. 
+The final *.td file then store tandem duplication calls for following analysis. For example, the bed_filtering.py could bed used to check and filter unexpected call whose length is as long as pre-defined by us. 
 
