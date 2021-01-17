@@ -24,6 +24,7 @@ SRR058208.11076897_16_16S20M    TTTGTCCCTTGGTTTT        2757730377+/).0+
 read name + flag + cigar, sequence, quality
 
 python divide_read_jump.py --i SRR058208.fastq011.reads > SRR058208.fastq011.reads.twoline
+
 python twoline_to_fastq.py --i SRR058208.fastq011.reads.twoline > SRR058208.fastq011.reads.twoline.fastq
 
 /home/lleng/program/novoalign/novocraft/novoalign -f SRR001935.fastq000.sam.reads.twoline.fastq -d /home/lleng/program/novoalign/ref/dna_ensembl/dmel_ensembl75_dna.nix -o SAM -r Random -R 10  > ../sams/SRR001935.fastq000.sam.reads.twoline.fastq.sam 2> SRR001935.fastq000.sam.reads.twoline.fastqerr.try.log
@@ -39,6 +40,7 @@ python sum_twoline_sam.py --i SRR018296.fastq009.sam.reads.twoline --s SRR018296
 
 
 for i in `ls *jump`; do python ~/src/splitread_bed.py --i $i > ../k3-bed/$i.bed; done
+
 for i in `ls *ar*bed`; do python ~/src/clustering_exhausting.py --i $i > $i.td ; done
 
 
