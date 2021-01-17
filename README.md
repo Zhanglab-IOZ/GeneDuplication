@@ -21,6 +21,7 @@ python pick_jump_reads.py --i SRR058286.fastq011.sam > SRR058286.fastq011.reads
 
 The split reads should have a large soft-clip part. If there's two soft-clip parts, this read will be abandoned. The input file is a sam file. the output file will be an expanded sam file that every read has two lines: the first line is the sam-format raw read, the second line has a format like this:
 SRR058208.11076897_16_16S20M    TTTGTCCCTTGGTTTT        2757730377+/).0+
+
 read name + flag + cigar, sequence, quality
 
 python divide_read_jump.py --i SRR058286.fastq011.reads > SRR058286.fastq011.reads.twoline
@@ -41,7 +42,8 @@ python sum_twoline_sam.py --i SRR058286.fastq011.reads.twoline --s SRR058286.fas
 
 for i in `ls *jump`; do python ~/src/splitread_bed.py --i $i > ../k3-bed/$i.bed; done
 
-for i in `ls *ar*bed`; do python ~/src/clustering_exhausting.py --i $i > $i.td ; done
+for i in `ls *bed`; do python ~/src/clustering_exhausting.py --i $i > $i.td ; done
 
 
+The final .td file then store tandem duplication calls for following analysis. For example, the bed_filtering.py could bed used to check and filter unexpected call whose length is as long as pre-defined by us. 
 
